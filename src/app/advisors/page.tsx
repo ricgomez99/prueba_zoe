@@ -1,41 +1,60 @@
-'use client'
-import usefetch from "../hooks/useFetch"
-import { useSearchParams } from "next/navigation"
+"use client";
+import useFetch from "../hooks/useFetch";
+import { useState, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
+import Modal from "../_components/Modal";
+import { Advisor } from "../types";
+import CreateAdvisorForm from "../_components/CreteAdvisorForm";
 
-type Advisor = {
-    id: string,
-    name: string,
-    email: string,
-    phone: string,
-    address: string,
-    avatar: string,
-    income: number
-}
+const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
-const url = 'http://localhost:3001/advisor'
 export default function Advisors() {
-    const {data} = usefetch<Advisor[]>(url)
-    const searchParams = useSearchParams()
+  const [showModal, setShowModal] = useState(false);
+  const { data, refetch } = useFetch<Advisor[]>(url as string);
+  const searchParams = useSearchParams();
 
-    const income = searchParams.get('value')
-    const parsedIncome = income !== null ? parseInt(income) : 0;
-    const minRange = Math.abs(parsedIncome - -10000);
-    const maxRange = Math.abs(parsedIncome + 10000);
+  const incomeParam = searchParams.get("income_value");
+  const parsedIncome = incomeParam !== null ? parseInt(incomeParam) : 0;
 
-    const filteredAdvisors = data?.filter((advisor) => advisor.income <= maxRange || advisor.income >= minRange);
-    console.log(filteredAdvisors)
+  // Removed absolute values & additional (-)
+  const minIncome = parsedIncome - 10000;
+  const maxIncome = parsedIncome + 10000;
 
+  const filteredData = data?.filter(
+    (item: Advisor) => item.income >= minIncome && item.income <= maxIncome
+  );
 
-    return <div>
+  const handleOpenModal = useCallback(() => {
+    setShowModal(true);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setShowModal(false);
+  }, []);
+
+  return (
+    <>
+      <div>
         <h1>Advisors</h1>
+        <button onClick={handleOpenModal}>Create advisor</button>
         <div>
-            <ul>
-            { data && data.map((advisor: Advisor) => (
-                    <div key={advisor.id}>
-                        <span>{ advisor.name }</span>
-                    </div>
-            ))}
-            </ul>
+          <ul>
+            {filteredData &&
+              filteredData.map((advisor: Advisor) => (
+                <div key={advisor.id}>
+                  <span>{advisor.name}</span>
+                </div>
+              ))}
+          </ul>
         </div>
-    </div>
+      </div>
+      {showModal ? (
+        <Modal isOpen={showModal} closeModal={handleCloseModal}>
+          <CreateAdvisorForm onAdvisorCreated={refetch} />
+        </Modal>
+      ) : (
+        <></>
+      )}
+    </>
+  );
 }

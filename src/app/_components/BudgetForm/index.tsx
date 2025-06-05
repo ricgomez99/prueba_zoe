@@ -1,32 +1,38 @@
-'use client'
+"use client";
 
-import { useState } from "react";
 import Input from "../Input";
-import { redirect } from "next/navigation";
-
-
+import { useRouter } from "next/navigation";
+import useInputChange from "@/app/hooks/useInputChange";
 interface Params {
-    formTitle: string;
+  formTitle: string;
 }
 
 export default function BudgetForm({ formTitle }: Params) {
+  const inputValues = {
+    income: "",
+  };
+  const { onChange, values } = useInputChange(inputValues);
+  const router = useRouter();
 
-    const [value, setValue] = useState()
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push(`/advisors?income_value=${values.income}`);
+  };
 
-    const handleChange = (e: any) => {
-        const { value } = e.target;
-        setValue(value)
-    }
-
-    const handleClick = () => {
-        redirect(`/advisors?value=${value}`)
-    }
-
-    return <form>
-            <div>{ formTitle }</div>
-            <div>
-                <Input name="budget" inputValue={value} onChange={handleChange} />
-            </div>
-            <button onClick={handleClick}>Search now</button>
-        </form>
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>{formTitle}</div>
+      <div>
+        <Input
+          name="income"
+          inputValue={values.income}
+          onChange={onChange}
+          maxLength={5}
+          type="text"
+          placeholder="Income"
+        />
+      </div>
+      <button type="submit">Search now</button>
+    </form>
+  );
 }
