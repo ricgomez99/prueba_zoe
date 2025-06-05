@@ -1,10 +1,29 @@
-
 interface Params {
-    onChange: (e: any) => void;
-    inputValue: string | undefined;
-    name: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputValue: string | number;
+  name: string;
+  maxLength?: number;
+  type: string;
+  placeholder: string;
 }
 
-export default function Input({ onChange, inputValue, name }: Params) { 
-    return <input onChange={onChange} value={inputValue} name={name} type="number" min={-10000} max={10000} required />
+export default function Input({
+  onChange,
+  inputValue,
+  name,
+  maxLength,
+  type,
+  placeholder,
+}: Params) {
+  return (
+    <input
+      onChange={onChange}
+      value={inputValue}
+      name={name}
+      type={type}
+      maxLength={maxLength}
+      placeholder={placeholder}
+      required
+    />
+  );
 }
