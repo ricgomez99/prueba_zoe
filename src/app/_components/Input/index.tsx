@@ -4,7 +4,7 @@ interface Params {
   name: string;
   maxLength?: number;
   type: string;
-  placeholder: string;
+  placeholder?: string;
 }
 
 export default function Input({

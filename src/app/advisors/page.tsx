@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Modal from "../_components/Modal";
 import { Advisor } from "../types";
 import CreateAdvisorForm from "../_components/CreteAdvisorForm";
+import Pagination from "../_components/Pagination";
 
 const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
@@ -37,16 +38,12 @@ export default function Advisors() {
       <div>
         <h1>Advisors</h1>
         <button onClick={handleOpenModal}>Create advisor</button>
-        <div>
-          <ul>
-            {filteredData &&
-              filteredData.map((advisor: Advisor) => (
-                <div key={advisor.id}>
-                  <span>{advisor.name}</span>
-                </div>
-              ))}
-          </ul>
-        </div>
+
+        <Pagination
+          items={filteredData as Array<Advisor>}
+          itemsPerPage={10}
+          length={filteredData?.length as number}
+        />
       </div>
       {showModal ? (
         <Modal isOpen={showModal} closeModal={handleCloseModal}>

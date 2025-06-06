@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import useAdvisorsContext from "./useAdvisorsContext";
 
 type Data<T> = T | null;
 type ErrorType = Error | null;
@@ -16,6 +17,7 @@ export default function useFetch<T>(url: string): Params<T> {
   const [data, setData] = useState<Data<T>>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<ErrorType>();
+  const { saveAdvisors } = useAdvisorsContext();
 
   const fetchAdvisors = useCallback(async () => {
     setLoading(true);
@@ -27,10 +29,12 @@ export default function useFetch<T>(url: string): Params<T> {
         throw new Error("Error while fetching data");
       }
 
+      saveAdvisors(data);
       setData(data);
       setError(null);
     } catch (error) {
       console.log(error as Error);
+      throw error;
     } finally {
       setLoading(false);
     }
