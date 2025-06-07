@@ -5,6 +5,7 @@ interface Params {
   maxLength?: number;
   type: string;
   placeholder?: string;
+  className?: string;
 }
 
 export default function Input({
@@ -14,6 +15,7 @@ export default function Input({
   maxLength,
   type,
   placeholder,
+  className,
 }: Params) {
   return (
     <input
@@ -23,6 +25,7 @@ export default function Input({
       type={type}
       maxLength={maxLength}
       placeholder={placeholder}
+      className={className}
       required
     />
   );

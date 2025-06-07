@@ -15,7 +15,7 @@ export default function Pagination({ itemsPerPage, length, items }: Params) {
   const totalPages = Math.ceil(length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = items?.slice(indexOfFirstItem, indexOfLastItem);
   const paginationItems = [];
   const { saveAdvisorId } = useAdvisorsContext();
   const router = useRouter();

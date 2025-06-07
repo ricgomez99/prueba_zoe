@@ -34,7 +34,7 @@ export default function Advisors() {
   }, []);
 
   return (
-    <>
+    <section>
       <div>
         <h1>Advisors</h1>
         <button onClick={handleOpenModal}>Create advisor</button>
@@ -52,6 +52,6 @@ export default function Advisors() {
       ) : (
         <></>
       )}
-    </>
+    </section>
   );
 }

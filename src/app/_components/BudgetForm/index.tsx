@@ -3,11 +3,14 @@
 import Input from "../Input";
 import { useRouter } from "next/navigation";
 import useInputChange from "@/app/hooks/useInputChange";
+import styles from "./budget.module.css";
+import SubmitButton from "../SubmitButton";
 interface Params {
   formTitle: string;
+  formSubtitle: string;
 }
 
-export default function BudgetForm({ formTitle }: Params) {
+export default function BudgetForm({ formTitle, formSubtitle }: Params) {
   const inputValues = {
     income: "",
   };
@@ -20,19 +23,33 @@ export default function BudgetForm({ formTitle }: Params) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>{formTitle}</div>
-      <div>
-        <Input
-          name="income"
-          inputValue={values.income}
-          onChange={onChange}
-          maxLength={5}
-          type="text"
-          placeholder="Income"
-        />
-      </div>
-      <button type="submit">Search now</button>
-    </form>
+    <article className={styles.form_container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <img src="./zoe-logo.svg" />
+        <div className={styles.form_header}>
+          <div className={styles.form_image_container}>
+            <img
+              src="./image-portrait.svg"
+              alt="profile image"
+              className={styles.form_image}
+            />
+          </div>
+          <h1 className={styles.form_title}>{formTitle}</h1>
+          <span className={styles.form_subtitle}>{formSubtitle}</span>
+        </div>
+        <div className={styles.form_inputs}>
+          <Input
+            name="income"
+            inputValue={values.income}
+            onChange={onChange}
+            maxLength={5}
+            type="text"
+            placeholder="Income"
+            className={styles.form_input}
+          />
+        </div>
+        <SubmitButton buttonText="Search Now" />
+      </form>
+    </article>
   );
 }
