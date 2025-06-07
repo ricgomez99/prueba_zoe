@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import useInputChange from "@/app/hooks/useInputChange";
 import styles from "./budget.module.css";
 import SubmitButton from "../SubmitButton";
+import IconInput from "../IconInput";
 interface Params {
   formTitle: string;
   formSubtitle: string;
@@ -13,6 +14,10 @@ interface Params {
 export default function BudgetForm({ formTitle, formSubtitle }: Params) {
   const inputValues = {
     income: "",
+  };
+  const submitButtonValues = {
+    src: "./glass.svg",
+    alt: "magnifying glass icon",
   };
   const { onChange, values } = useInputChange(inputValues);
   const router = useRouter();
@@ -37,18 +42,24 @@ export default function BudgetForm({ formTitle, formSubtitle }: Params) {
           <h1 className={styles.form_title}>{formTitle}</h1>
           <span className={styles.form_subtitle}>{formSubtitle}</span>
         </div>
-        <div className={styles.form_inputs}>
+        <IconInput
+          iconAlt="dollar sign"
+          inconSrc="./dollar.svg"
+          labelName="Current income">
           <Input
             name="income"
             inputValue={values.income}
             onChange={onChange}
             maxLength={5}
             type="text"
-            placeholder="Income"
             className={styles.form_input}
           />
-        </div>
-        <SubmitButton buttonText="Search Now" />
+        </IconInput>
+        <SubmitButton
+          buttonText="Search Now"
+          altText={submitButtonValues.alt}
+          buttonSrc={submitButtonValues.src}
+        />
       </form>
     </article>
   );

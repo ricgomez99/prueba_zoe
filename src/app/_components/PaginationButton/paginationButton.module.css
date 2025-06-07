@@ -1,0 +1,17 @@
+.pagination_button {
+    border: 0;
+    background-color: transparent;
+    outline: 0;
+    cursor: pointer;
+    width: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.pagination_button_icon {
+    width: 14px;
+    height: 14px;
+}

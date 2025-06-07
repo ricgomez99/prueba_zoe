@@ -1,23 +1,22 @@
-.submit_button {
+.delete_button {
+    padding: 6.4px 15px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    padding: 6.4px 15px;
     border-radius: 4px;
-    border: 1px solid #5373E3;
-    background-color: #5373E3;
+    background-color: #F67574;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.04);
     color: #fff;
     font-size: 14px;
     font-weight: 400;
-    height: 40px;
     cursor: pointer;
-    box-shadow: 2px 0px 0px rgba(0, 0, 0, 0.04);
+    outline: 0;
+    border: 1px solid #f67574;
 }
 
-
-.botton_icon {
+.delete_button_icon {
     width: 14px;
     height: 14px;
 }

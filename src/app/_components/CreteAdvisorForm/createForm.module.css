@@ -1,0 +1,37 @@
+.create_form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+}
+
+.create_form_input_area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 16px;
+    gap: 15px
+}
+
+.create_form_input {
+    display: flex;
+    padding: 13px 8px 13px 16px;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #DCDCDC;
+    background-color: #fff;
+    outline: 0;
+}
+
+.create_form_action_buttons {
+    display: flex;
+    border-top: 1px solid #dcdcdc;
+    padding: 16px;
+}
+
+@media (min-width: 900px) {
+    .create_form_input_area {
+        gap: 40px;
+    }
+}
