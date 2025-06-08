@@ -15,7 +15,14 @@ export default function DeleteButton({
 }: Params) {
   return (
     <button onClick={onClick} className={styles.delete_button}>
-      <img src={iconSrc} alt={iconAlt} className={styles.delete_button_icon} />
+      {iconSrc && (
+        <img
+          src={iconSrc}
+          alt={iconAlt}
+          className={styles.delete_button_icon}
+        />
+      )}
+
       {buttonText}
     </button>
   );

@@ -41,14 +41,14 @@ export default function CreateAdvisorForm({ onAdvisorCreated }: Params) {
   return (
     <form onSubmit={handleSubmit} className={styles.create_form}>
       <div className={styles.create_form_input_area}>
-        <IconInput labelName="Nombre">
+        <IconInput labelName="Name">
           <Input
             inputValue={values.name}
             maxLength={30}
             name="name"
             onChange={onChange}
             type="text"
-            placeholder="Nombre"
+            placeholder="Name"
             className={styles.create_form_input}
           />
         </IconInput>
@@ -76,27 +76,27 @@ export default function CreateAdvisorForm({ onAdvisorCreated }: Params) {
             className={styles.create_form_input}
           />
         </IconInput>
-        <IconInput labelName="Telefono">
+        <IconInput labelName="Phone">
           <Input
             inputValue={values.phone}
             maxLength={13}
             name="phone"
             onChange={onChange}
             type="text"
-            placeholder="Telefono"
+            placeholder="Phone"
             className={styles.create_form_input}
           />
         </IconInput>
       </div>
       <div className={styles.create_form_input_area}>
-        <IconInput labelName="Direccion">
+        <IconInput labelName="Address">
           <Input
             inputValue={values.address}
             maxLength={50}
             name="address"
             onChange={onChange}
             type="text"
-            placeholder="Direccion"
+            placeholder="Address"
             className={styles.create_form_input}
           />
         </IconInput>

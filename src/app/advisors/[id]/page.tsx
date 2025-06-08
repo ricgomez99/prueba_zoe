@@ -8,6 +8,7 @@ import useDeleteAdvisor from "@/app/hooks/useDeleteAdvisor";
 import { useRouter } from "next/navigation";
 import styles from "./details.module.css";
 import DeleteButton from "@/app/_components/DeleteButton";
+import EditButton from "@/app/_components/EditButton";
 
 const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
@@ -22,6 +23,16 @@ export default function AdvisorDetails() {
   const profilePicture = advisor?.avatar
     ? advisor.avatar
     : "/default-profile.svg";
+
+  const deleteButton = {
+    src: "/can.svg",
+    alt: "trash can",
+  };
+
+  const editButton = {
+    src: "/edit-icon.svg",
+    alt: "edit icon",
+  };
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -57,13 +68,17 @@ export default function AdvisorDetails() {
               <div className={styles.details_header_buttons}>
                 <DeleteButton
                   buttonText="Delete"
-                  iconAlt="Can"
-                  iconSrc="./deleteCan.svg"
+                  iconAlt={deleteButton.alt}
+                  iconSrc={deleteButton.src}
                   onClick={handleDeleteAdvisor}
                 />
-                <button type="button" onClick={handleOpenModal}>
-                  Edit Advisor
-                </button>
+
+                <EditButton
+                  buttonText="Edit Advisor"
+                  onClick={handleOpenModal}
+                  iconAlt={editButton.alt}
+                  iconSrc={editButton.src}
+                />
               </div>
             </div>
           </aside>

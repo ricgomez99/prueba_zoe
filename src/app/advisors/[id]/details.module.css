@@ -48,6 +48,8 @@
 }
 
 .details_informartion {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #DCDCDC;
@@ -91,4 +93,23 @@
     color: #5F5F5F;
     font-size: 16px;
     font-weight: 400;
+}
+
+@media (min-width: 900px) {
+    .details_header_content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .details_card {
+        padding: 38px 40px;
+    }
+
+    .details_informartion {
+        flex-direction: row;
+        gap: 16px;
+        align-items: baseline;
+        padding-bottom: 26px;
+    }
 }
