@@ -1,4 +1,3 @@
-const url = process.env.NEXT_PUBLIC_SERVER_URL;
 export const updateAdvisor = async <T>({
   payload,
   id,
@@ -7,6 +6,8 @@ export const updateAdvisor = async <T>({
   id: string;
 }) => {
   try {
+    const url =
+      process.env.NEXT_PUBLIC_SERVER_URL ?? "http://localhost:3001/advisor";
     const response = await fetch(`${url}/${id}`, {
       method: "PATCH",
       body: JSON.stringify(payload),

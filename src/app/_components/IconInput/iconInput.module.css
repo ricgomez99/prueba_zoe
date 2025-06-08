@@ -1,0 +1,31 @@
+.inputs_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.inputs_field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+.input_label {
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    color: #5F5F5F;
+    align-self: flex-start;
+}
+
+.input_icon {
+    position: absolute;
+    left: 10px;
+    padding: 0;
+    height: 18px;
+    width: 18px;
+    z-index: 1;
+}

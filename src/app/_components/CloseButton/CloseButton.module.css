@@ -1,0 +1,12 @@
+.close_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #5373E3;
+    border-radius: 4px;
+    color: #5373E3;
+    padding: 6px 8px;
+    cursor: pointer;
+}

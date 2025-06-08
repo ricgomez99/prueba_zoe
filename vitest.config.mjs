@@ -7,5 +7,7 @@ export default defineConfig({
   test: {
     exclude: [...configDefaults.exclude],
     environment: "jsdom",
+    globals: true,
+    css: true,
   },
 });

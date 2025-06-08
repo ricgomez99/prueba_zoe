@@ -1,13 +1,11 @@
-import styles from "./page.module.css";
-import Link from "next/link";
+import LandingPage from "./landingPage/page";
+import styles from "./layout.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <div className={styles.layout}>
       <main className={styles.main}>
-        Hello world!
-        <Link href={"/landingPage"}>Go to Landing page</Link>
-        <Link href={"/advisors"}>Advisors</Link>
+        <LandingPage />
       </main>
     </div>
   );
